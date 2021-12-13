@@ -7,7 +7,9 @@
   "author": "Akinlolu Peter Ayodeji <peterakinlolu1@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev src/index.ts"
+    "dev": "ts-node-dev src/index.ts",
+    "prod": "node dist/index.js",
+    "transpile": "tsc"
   },
   "dependencies": {
     "cors": "^2.8.5",

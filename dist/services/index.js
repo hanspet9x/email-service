@@ -56,10 +56,10 @@ class EmailService {
         this.sendReponse = (body, res) => {
             email_1.transport.sendMail(body, (err, info) => {
                 if (err) {
-                    response_1.respond400(res, err.message);
+                    (0, response_1.respond400)(res, err.message);
                     return;
                 }
-                response_1.respond200(res, info);
+                (0, response_1.respond200)(res, info);
             });
         };
     }

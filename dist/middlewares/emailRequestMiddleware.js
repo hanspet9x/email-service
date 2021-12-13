@@ -8,7 +8,7 @@ const validateEmailRequest = () => (req, res, next) => {
         next();
         return;
     }
-    response_1.respond400(res, 'to, message, sender,or subject not found');
+    (0, response_1.respond400)(res, 'to, message, sender,or subject not found');
     return;
 };
 exports.validateEmailRequest = validateEmailRequest;

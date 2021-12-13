@@ -8,7 +8,7 @@ const authorizationRequest = (config) => (req, res, next) => {
         next();
         return;
     }
-    response_1.respond401(res, 'Authorization failed.');
+    (0, response_1.respond401)(res, 'Authorization failed.');
     return;
 };
 exports.authorizationRequest = authorizationRequest;

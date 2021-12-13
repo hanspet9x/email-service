@@ -12,6 +12,8 @@ const config = {
     emailPassword: process.env.EMAIL_PASSWORD,
     emailHeaderKey: process.env.EMAIL_HEADER_KEY,
     emailHeaderValue: process.env.EMAIL_HEADER_VALUE,
+    httpServerPort: Number(process.env.HTTP_SERVER_PORT),
+    httpsServerPort: Number(process.env.HTTPS_SERVER_PORT),
 };
 exports.default = config;
 //# sourceMappingURL=index.js.map

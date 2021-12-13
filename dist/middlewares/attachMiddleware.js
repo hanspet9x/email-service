@@ -11,7 +11,7 @@ const attachmentMiddleware = () => (req, res, next) => {
         next();
         return;
     }
-    response_1.respond400(res, 'File not found.');
+    (0, response_1.respond400)(res, 'File not found.');
     return;
 };
 exports.attachmentMiddleware = attachmentMiddleware;

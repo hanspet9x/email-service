@@ -5,4 +5,6 @@ export interface IConfig {
     emailPassword: string;
     emailHeaderKey: string;
     emailHeaderValue: string;
+    httpsServerPort: number;
+    httpServerPort: number;
 };

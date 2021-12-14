@@ -6,6 +6,8 @@ COPY package.json .
 
 RUN npm install --production
 
+RUN npm install pm2
+
 COPY . .
 
-CMD ["npm", "run", "prod"]
+CMD ["npm", "run", "pm2"]

@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "ts-node-dev src/index.ts",
     "prod": "node dist/index.js",
+    "pm2": "pm2 start dist/index.js --name email-service",
     "transpile": "tsc"
   },
   "dependencies": {

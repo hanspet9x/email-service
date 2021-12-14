@@ -1,0 +1,9 @@
+node_modules
+.eslint*
+.gitignore
+tsconfig.json
+yarn-error.log
+yarn.lock
+src
+.env
+.ttlx

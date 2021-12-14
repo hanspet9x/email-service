@@ -1,0 +1,10 @@
+version: '3'
+services:
+  email-service:
+    image: hanspet/node-email-service:1.0
+    ports:
+      - 3500:3500
+      - 3499:3499
+    volumes:
+      - ./:/app
+    working_dir: /app

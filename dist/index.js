@@ -10,11 +10,22 @@ const http_1 = __importDefault(require("http"));
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const config_1 = __importDefault(require("./config"));
+const response_1 = require("./utils/response");
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
 const init = () => {
     app.use('/email', controllers_1.default);
+    app.use((err, req, res, next) => {
+        if (res.headersSent) {
+            next(err);
+            return;
+        }
+        (0, response_1.respond400)(res, err.message);
+    });
+    app.use((req, res, next) => {
+        (0, response_1.respond400)(res, 'A fatal error has occured.');
+    });
     console.log('listening');
 };
 const ssl = {

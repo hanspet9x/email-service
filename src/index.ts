@@ -5,6 +5,7 @@ import http from 'http';
 import fs from 'fs';
 import path from 'path';
 import config from './config';
+import {respond400} from './utils/response';
 
 const app = express();
 
@@ -13,6 +14,17 @@ app.use(express.urlencoded({extended: false}));
 
 const init = () => {
   app.use('/email', appRouter);
+  app.use((err, req, res, next) => {
+    if (res.headersSent) {
+      next(err);
+      return;
+    }
+    respond400(res, err.message);
+  });
+
+  app.use((req, res, next) => {
+    respond400(res, 'A fatal error has occured.');
+  });
   console.log('listening');
 };
 

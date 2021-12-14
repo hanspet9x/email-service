@@ -27,5 +27,4 @@ appRouter.post('/html', validateEmailRequest(), mail.sendHTML);
 appRouter.post('/attach/text', validateEmailRequest(), mail.sendTextAttach);
 appRouter.post('/attach/html', validateEmailRequest(), mail.sendHTMLAttach);
 
-
 export default appRouter;

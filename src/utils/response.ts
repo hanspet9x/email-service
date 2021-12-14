@@ -7,3 +7,6 @@ export const respond400 = (res, errorMesssage) => {
 export const respond200 = (res, data) => {
   res.status(200).json({error: false, message: '', data});
 };
+export const respond202 = (res) => {
+  res.status(202).json({error: false, message: 'processing..', data: {}});
+};

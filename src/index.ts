@@ -5,7 +5,7 @@ import http from 'http';
 import fs from 'fs';
 import path from 'path';
 import config from './config';
-import {respond400} from './utils/response';
+import {respond400, respond404} from './utils/response';
 
 const app = express();
 
@@ -23,7 +23,7 @@ const init = () => {
   });
 
   app.use((req, res, next) => {
-    respond400(res, 'A fatal error has occured.');
+    respond404(res, 'URL not found.');
   });
   console.log('listening');
 };

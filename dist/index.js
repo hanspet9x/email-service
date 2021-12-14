@@ -7,10 +7,9 @@ const express_1 = __importDefault(require("express"));
 const controllers_1 = __importDefault(require("./controllers"));
 const https_1 = __importDefault(require("https"));
 const http_1 = __importDefault(require("http"));
-const fs_1 = __importDefault(require("fs"));
-const path_1 = __importDefault(require("path"));
 const config_1 = __importDefault(require("./config"));
 const response_1 = require("./utils/response");
+const ssl_1 = require("./config/ssl");
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
@@ -24,15 +23,11 @@ const init = () => {
         (0, response_1.respond400)(res, err.message);
     });
     app.use((req, res, next) => {
-        (0, response_1.respond400)(res, 'A fatal error has occured.');
+        (0, response_1.respond404)(res, 'URL not found.');
     });
     console.log('listening');
 };
-const ssl = {
-    cert: fs_1.default.readFileSync(path_1.default.join(__dirname, '../.ttlx/ttl.crt')),
-    ca: fs_1.default.readFileSync(path_1.default.join(__dirname, '../.ttlx/ttl.crt')),
-    key: fs_1.default.readFileSync(path_1.default.join(__dirname, '../.ttlx/ttl.key')),
-};
 http_1.default.createServer(app).listen(config_1.default.httpServerPort, init);
-https_1.default.createServer(ssl, app).listen(config_1.default.httpsServerPort, init);
+https_1.default.createServer((0, ssl_1.getSSLParam)(config_1.default), app)
+    .listen(config_1.default.httpsServerPort, init);
 //# sourceMappingURL=index.js.map

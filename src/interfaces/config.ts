@@ -7,4 +7,6 @@ export interface IConfig {
     emailHeaderValue: string;
     httpsServerPort: number;
     httpServerPort: number;
+    appCRTPath: string;
+    appKeyPath: string;
 };

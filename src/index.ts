@@ -2,10 +2,9 @@ import express from 'express';
 import appRouter from './controllers';
 import https from 'https';
 import http from 'http';
-import fs from 'fs';
-import path from 'path';
 import config from './config';
 import {respond400, respond404} from './utils/response';
+import {getSSLParam} from './config/ssl';
 
 const app = express();
 
@@ -28,10 +27,7 @@ const init = () => {
   console.log('listening');
 };
 
-const ssl = {
-  cert: fs.readFileSync(path.join(__dirname, '../.ttlx/ttl.crt')),
-  ca: fs.readFileSync(path.join(__dirname, '../.ttlx/ttl.crt')),
-  key: fs.readFileSync(path.join(__dirname, '../.ttlx/ttl.key')),
-};
 http.createServer(app).listen(config.httpServerPort, init);
-https.createServer(ssl, app).listen(config.httpsServerPort, init);
+
+https.createServer(getSSLParam(config), app)
+    .listen(config.httpsServerPort, init);
